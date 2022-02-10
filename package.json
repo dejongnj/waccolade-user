@@ -19,6 +19,9 @@
   "devDependencies": {
     "@types/aws-sdk": "0.0.42",
     "@types/node": "^7.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "eslint": "^8.8.0",
     "tslint": "^5.5.0",
     "tslint-config-standard": "^6.0.1",
     "typescript": "^2.4.2"

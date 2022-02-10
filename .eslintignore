@@ -1,2 +1,2 @@
-user/*.js
 node_modules
+/user/*.js

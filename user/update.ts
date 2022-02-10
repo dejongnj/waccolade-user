@@ -1,8 +1,8 @@
 'use strict';
 
-const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
+import { DynamoDB } from 'aws-sdk'
 
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
+const dynamoDb = new DynamoDB.DocumentClient();
 
 module.exports.update = (event, context, callback) => {
   const timestamp = new Date().getTime();
@@ -19,7 +19,7 @@ module.exports.update = (event, context, callback) => {
     return;
   }
 
-  const params = {
+  const params: DynamoDB.UpdateParam = {
     TableName: process.env.DYNAMODB_TABLE,
     Key: {
       id: event.pathParameters.id,

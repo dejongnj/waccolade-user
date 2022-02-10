@@ -1,6 +1,6 @@
 'use strict'
 
-import * as uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 import { DynamoDB } from 'aws-sdk'
 
@@ -18,7 +18,7 @@ module.exports.create = (event, context, callback) => {
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Item: {
-      id: uuid.v1(),
+      id: uuidv4(),
       text: data.text,
       checked: false,
       createdAt: timestamp,
@@ -28,7 +28,7 @@ module.exports.create = (event, context, callback) => {
   console.error('params', params)
 
   // write the user to the database
-  dynamoDb.put(params, (error, result) => {
+  dynamoDb.put(params, (error) => {
     // handle potential errors
     if (error) {
       console.error(error)
