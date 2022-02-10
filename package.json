@@ -5,6 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "serverless deploy",
+    "deploy-create": "serverless deploy function -f create",
+    "deploy-get": "serverless deploy function -f get",
+    "deploy-list": "serverless deploy function -f list",
+    "deploy-update": "serverless deploy function -f update",
     "watch": "tsc -w",
     "lint": "tslint '*.ts'"
   },

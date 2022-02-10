@@ -1,5 +1,5 @@
 service: waccolade-user
-frameworkVersion: '2'
+frameworkVersion: '3'
 
 provider:
   name: aws
@@ -24,38 +24,38 @@ provider:
 
 functions:
   create:
-    handler: todos/create.create
+    handler: user/create.create
     events:
       - httpApi:
-          path: /todos
+          path: /user
           method: post
 
   list:
-    handler: todos/list.list
+    handler: user/list.list
     events:
       - httpApi:
-          path: /todos
+          path: /user
           method: get
 
   get:
-    handler: todos/get.get
+    handler: user/get.get
     events:
       - httpApi:
-          path: /todos/{id}
+          path: /user/{id}
           method: get
 
   update:
-    handler: todos/update.update
+    handler: user/update.update
     events:
       - httpApi:
-          path: /todos/{id}
+          path: /user/{id}
           method: put
 
 resources:
   Resources:
-    TodosDynamoDbTable:
+    WaccoladeUserDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: Retain
+      DeletionPolicy: Delete # Delete or Retain
       Properties:
         AttributeDefinitions:
           -

@@ -11,7 +11,7 @@ module.exports.create = (event, context, callback) => {
   const data = JSON.parse(event.body)
   if (typeof data.text !== 'string') {
     console.error('Validation Failed')
-    callback(new Error('Couldn\'t create the todo item.'))
+    callback(new Error('Couldn\'t create the user item.'))
     return
   }
 
@@ -25,13 +25,14 @@ module.exports.create = (event, context, callback) => {
       updatedAt: timestamp
     }
   }
+  console.error('params', params)
 
-  // write the todo to the database
+  // write the user to the database
   dynamoDb.put(params, (error, result) => {
     // handle potential errors
     if (error) {
       console.error(error)
-      callback(new Error('Couldn\'t create the todo item.'))
+      callback(new Error('Couldn\'t create the user item.'))
       return
     }
 
